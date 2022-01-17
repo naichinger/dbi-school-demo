@@ -2,14 +2,14 @@ package at.htl.workloads.classroom;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import java.time.LocalTime;
+import java.sql.Time;
 
 @Entity
 public class ClassroomLesson {
     @EmbeddedId
     ClassroomLessonId id;
-    LocalTime start;
-    LocalTime end;
+    Time start;
+    Time end;
     boolean isHeld;
 
     public ClassroomLessonId getId() {
@@ -20,19 +20,19 @@ public class ClassroomLesson {
         this.id = id;
     }
 
-    public LocalTime getStart() {
+    public Time getStart() {
         return start;
     }
 
-    public void setStart(LocalTime start) {
+    public void setStart(Time start) {
         this.start = start;
     }
 
-    public LocalTime getEnd() {
+    public Time getEnd() {
         return end;
     }
 
-    public void setEnd(LocalTime end) {
+    public void setEnd(Time end) {
         this.end = end;
     }
 

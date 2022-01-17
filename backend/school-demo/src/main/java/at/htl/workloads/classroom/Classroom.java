@@ -14,12 +14,33 @@ public class Classroom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    @OneToMany
+    @OneToMany(mappedBy = "classroom")
     List<Student> students = new ArrayList<>();
+    @OneToMany(mappedBy = "id.classroom")
+    List<ClassroomLesson> lessons = new ArrayList<>();
+    @OneToMany
+    List<Test> tests = new ArrayList<>();
     @ManyToOne
     Teacher formTeacher;
     @OneToOne
     Room classroom;
+
+    public static Classroom create(String name, Teacher teacher, Room room, List<Student> students) {
+        Classroom classroom = new Classroom();
+        classroom.setName(name);
+        classroom.setFormTeacher(teacher);
+        classroom.setClassroom(room);
+        classroom.setStudents(students);
+        return classroom;
+    }
+
+    public List<Test> getTests() {
+        return tests;
+    }
+
+    public void setTests(List<Test> tests) {
+        this.tests = tests;
+    }
 
     public String getName() {
         return name;
@@ -51,5 +72,21 @@ public class Classroom {
 
     public void setFormTeacher(Teacher formTeacher) {
         this.formTeacher = formTeacher;
+    }
+
+    public Room getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(Room classroom) {
+        this.classroom = classroom;
+    }
+
+    public List<ClassroomLesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<ClassroomLesson> lessons) {
+        this.lessons = lessons;
     }
 }

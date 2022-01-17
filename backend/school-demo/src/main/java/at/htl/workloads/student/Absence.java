@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Absense {
+public class Absence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -31,6 +31,14 @@ public class Absense {
         this.reason = reason;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public boolean isJustified() {
         return justified;
     }
@@ -53,13 +61,5 @@ public class Absense {
 
     public void setEnd(LocalDateTime end) {
         this.end = end;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
     }
 }

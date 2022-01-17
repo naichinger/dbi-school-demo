@@ -1,9 +1,8 @@
 package at.htl.workloads.student;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import at.htl.workloads.classroom.Classroom;
+
+import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
@@ -14,6 +13,8 @@ public class Student {
     Long id;
     String name;
     LocalDateTime birthday;
+    @ManyToOne
+    Classroom classroom;
 
     public String getName() {
         return name;
@@ -29,5 +30,21 @@ public class Student {
 
     public void setBirthday(LocalDateTime birthday) {
         this.birthday = birthday;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Classroom getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
     }
 }
