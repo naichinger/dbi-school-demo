@@ -14,6 +14,8 @@ public class Class {
     List<Student> students = new ArrayList<>();
     @ManyToOne
     Teacher formTeacher;
+    @OneToOne
+    Room classroom;
 
     public String getName() {
         return name;
