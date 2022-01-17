@@ -1,10 +1,11 @@
 package at.htl.workloads.teacher;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import at.htl.workloads.classroom.ClassroomLesson;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Teacher {
@@ -13,6 +14,16 @@ public class Teacher {
     Long id;
     String name;
     BigDecimal salary;
+    @OneToMany(mappedBy = "teacher")
+    List<ClassroomLesson> lessons = new ArrayList<>();
+
+    public List<ClassroomLesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<ClassroomLesson> lessons) {
+        this.lessons = lessons;
+    }
 
     public String getName() {
         return name;

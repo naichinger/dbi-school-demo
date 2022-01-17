@@ -1,0 +1,37 @@
+GET http://localhost:8080/api/classroom
+
+###
+
+GET http://localhost:8080/api/classroom/1
+
+###
+
+POST http://localhost:8080/api/classroom
+Content-Type: application/json
+
+{
+  "name": "2BHIF",
+  "studentIds": [],
+  "teacherId": null,
+  "roomId": null
+}
+
+###
+
+POST http://localhost:8080/api/classroom/6/update
+Content-Type: application/json
+
+{
+  "name": "2CHIF",
+  "studentIds": [],
+  "teacherId": null,
+  "roomId": null
+}
+
+###
+
+POST http://localhost:8080/api/classroom/6/remove
+
+###
+
+GET http://localhost:8080/api/classroom/1/lesson/TUESDAY

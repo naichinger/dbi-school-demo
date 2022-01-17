@@ -9,6 +9,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
@@ -28,12 +30,14 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public Classroom addClassroom(String name, Long teacherId, Long roomId, List<Long> studentIds) {
+    public Classroom addClassroom(String name, Long teacherId, Long roomId, List<Long> studentIds, List<Long> lessonIds, List<Long> testIds) {
         //TODO: use other services to get entities
         Teacher teacher = null;
         Room room = null;
-        List<Student> students = null;
-        Classroom classroom = Classroom.create(name, teacher, room, students);
+        List<Student> students = new ArrayList<>();
+        List<ClassroomLesson> lessons = new ArrayList<>();
+        List<Test> tests = new ArrayList<>();
+        Classroom classroom = Classroom.create(name, teacher, room, students, lessons, tests);
         classroomRepository.add(classroom);
         return classroom;
     }
@@ -44,13 +48,26 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public Classroom updateClassroom(long id, String name, Long teacherId, Long roomId, List<Long> studentIds) {
+    public Classroom updateClassroom(Classroom classroom, String name, Long teacherId, Long roomId, List<Long> studentIds, List<Long> lessonIds, List<Long> testIds) {
         //TODO: use other services to get entities
-        Classroom classroom = this.classroomRepository.findById(id);
-        classroom.setName(name);
         Teacher teacher = null;
         Room room = null;
-        List<Student> students = null;
+        List<Student> students = new ArrayList<>();
+        List<ClassroomLesson> lessons = new ArrayList<>();
+        List<Test> tests = new ArrayList<>();
+
+        classroom.setName(name);
+        classroom.setFormTeacher(teacher);
+        classroom.setClassroom(room);
+        classroom.setStudents(students);
+        classroom.setLessons(lessons);
+        classroom.setTests(tests);
+
         return this.classroomRepository.update(classroom);
+    }
+
+    @Override
+    public List<ClassroomLesson> getLessonsForDayOfWeek(Classroom classroom, DayOfWeek dayOfWeek) {
+        return classroomRepository.getLessonsForDayOfWeek(classroom, dayOfWeek);
     }
 }

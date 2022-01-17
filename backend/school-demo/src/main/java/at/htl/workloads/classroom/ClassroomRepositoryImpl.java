@@ -3,6 +3,7 @@ package at.htl.workloads.classroom;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.time.DayOfWeek;
 import java.util.List;
 
 @ApplicationScoped
@@ -42,5 +43,14 @@ public class ClassroomRepositoryImpl implements ClassroomRepository {
     @Override
     public Classroom update(Classroom classroom) {
         return this.entityManager.merge(classroom);
+    }
+
+    @Override
+    public List<ClassroomLesson> getLessonsForDayOfWeek(Classroom classroom, DayOfWeek dayOfWeek) {
+        TypedQuery<ClassroomLesson> typedQuery =
+                this.entityManager.createQuery("select cl from ClassroomLesson cl where cl.classroom=:CLASSROOM and cl.dayOfWeek=:DOW", ClassroomLesson.class);
+        typedQuery.setParameter("CLASSROOM", classroom);
+        typedQuery.setParameter("DOW", dayOfWeek);
+        return typedQuery.getResultList();
     }
 }

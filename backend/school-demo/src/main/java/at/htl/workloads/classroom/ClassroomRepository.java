@@ -1,5 +1,6 @@
 package at.htl.workloads.classroom;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 public interface ClassroomRepository {
@@ -8,4 +9,5 @@ public interface ClassroomRepository {
     void add(Classroom classroom);
     void remove(Classroom classroom);
     Classroom update(Classroom classroom);
+    List<ClassroomLesson> getLessonsForDayOfWeek(Classroom classroom, DayOfWeek dayOfWeek);
 }

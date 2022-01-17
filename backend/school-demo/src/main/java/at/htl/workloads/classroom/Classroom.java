@@ -4,6 +4,7 @@ import at.htl.workloads.room.Room;
 import at.htl.workloads.student.Student;
 import at.htl.workloads.teacher.Teacher;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,23 +15,31 @@ public class Classroom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    @OneToMany(mappedBy = "classroom")
+    @OneToMany(mappedBy = "classroom", cascade = CascadeType.PERSIST)
     List<Student> students = new ArrayList<>();
-    @OneToMany(mappedBy = "id.classroom")
+    @OneToMany(mappedBy = "classroom")
     List<ClassroomLesson> lessons = new ArrayList<>();
     @OneToMany
     List<Test> tests = new ArrayList<>();
-    @ManyToOne
+    @OneToOne
     Teacher formTeacher;
     @OneToOne
     Room classroom;
 
-    public static Classroom create(String name, Teacher teacher, Room room, List<Student> students) {
+    public static Classroom create(
+            String name,
+            Teacher teacher,
+            Room room,
+            List<Student> students,
+            List<ClassroomLesson> lessons,
+            List<Test> tests) {
         Classroom classroom = new Classroom();
         classroom.setName(name);
         classroom.setFormTeacher(teacher);
         classroom.setClassroom(room);
         classroom.setStudents(students);
+        classroom.setLessons(lessons);
+        classroom.setTests(tests);
         return classroom;
     }
 
