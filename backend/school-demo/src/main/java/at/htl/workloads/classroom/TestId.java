@@ -1,4 +1,4 @@
-package at.htl.entity;
+package at.htl.workloads.classroom;
 
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
@@ -8,23 +8,23 @@ import java.util.Objects;
 @Embeddable
 public class TestId implements Serializable {
     @ManyToOne
-    ClassLesson classLesson;
+    ClassroomLesson classLesson;
     @ManyToOne
-    Class classroom;
+    Classroom classroom;
 
-    public ClassLesson getClassLesson() {
+    public ClassroomLesson getClassLesson() {
         return classLesson;
     }
 
-    public void setClassLesson(ClassLesson classLesson) {
+    public void setClassLesson(ClassroomLesson classLesson) {
         this.classLesson = classLesson;
     }
 
-    public Class getClassroom() {
+    public Classroom getClassroom() {
         return classroom;
     }
 
-    public void setClassroom(Class classroom) {
+    public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
     }
 

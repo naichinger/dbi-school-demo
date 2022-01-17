@@ -1,4 +1,4 @@
-package at.htl.entity;
+package at.htl.workloads.classroom;
 
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
@@ -6,17 +6,17 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class ClassLessonId implements Serializable {
+public class ClassroomLessonId implements Serializable {
     @ManyToOne
-    Class classroom;
+    Classroom classroom;
     @ManyToOne
     Lesson lesson;
 
-    public Class getClassroom() {
+    public Classroom getClassroom() {
         return classroom;
     }
 
-    public void setClassroom(Class classroom) {
+    public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
     }
 
@@ -32,7 +32,7 @@ public class ClassLessonId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ClassLessonId that = (ClassLessonId) o;
+        ClassroomLessonId that = (ClassroomLessonId) o;
         return Objects.equals(classroom, that.classroom) && Objects.equals(lesson, that.lesson);
     }
 

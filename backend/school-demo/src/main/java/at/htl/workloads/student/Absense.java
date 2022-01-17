@@ -1,7 +1,6 @@
-package at.htl.entity;
+package at.htl.workloads.student;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

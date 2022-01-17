@@ -1,4 +1,4 @@
-package at.htl.entity;
+package at.htl.workloads.room;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

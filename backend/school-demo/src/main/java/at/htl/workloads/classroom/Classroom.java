@@ -1,11 +1,15 @@
-package at.htl.entity;
+package at.htl.workloads.classroom;
+
+import at.htl.workloads.room.Room;
+import at.htl.workloads.student.Student;
+import at.htl.workloads.teacher.Teacher;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Class {
+public class Classroom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

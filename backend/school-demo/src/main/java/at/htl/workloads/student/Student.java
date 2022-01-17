@@ -1,4 +1,4 @@
-package at.htl.entity;
+package at.htl.workloads.student;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

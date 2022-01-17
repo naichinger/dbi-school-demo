@@ -1,23 +1,22 @@
-package at.htl.entity;
+package at.htl.workloads.classroom;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import java.sql.Time;
 import java.time.LocalTime;
 
 @Entity
-public class ClassLesson {
+public class ClassroomLesson {
     @EmbeddedId
-    ClassLessonId id;
+    ClassroomLessonId id;
     LocalTime start;
     LocalTime end;
     boolean isHeld;
 
-    public ClassLessonId getId() {
+    public ClassroomLessonId getId() {
         return id;
     }
 
-    public void setId(ClassLessonId id) {
+    public void setId(ClassroomLessonId id) {
         this.id = id;
     }
 

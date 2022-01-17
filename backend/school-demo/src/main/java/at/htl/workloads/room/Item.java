@@ -1,4 +1,4 @@
-package at.htl.entity;
+package at.htl.workloads.room;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,12 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class DepartmentExecutive {
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    String title;
 
     public Long getId() {
         return id;
@@ -27,13 +26,5 @@ public class DepartmentExecutive {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 }
