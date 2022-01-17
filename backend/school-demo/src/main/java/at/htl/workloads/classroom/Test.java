@@ -20,19 +20,19 @@ public class Test {
         this.id = id;
     }
 
-    public ClassroomLesson getLesson() {
-        return lesson;
-    }
-
-    public void setLesson(ClassroomLesson lesson) {
-        this.lesson = lesson;
-    }
-
     public LocalDate getDate() {
         return date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public ClassroomLesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(ClassroomLesson lesson) {
+        this.lesson = lesson;
     }
 }

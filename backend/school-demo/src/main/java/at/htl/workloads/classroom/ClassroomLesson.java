@@ -8,8 +8,6 @@ import java.sql.Time;
 public class ClassroomLesson {
     @EmbeddedId
     ClassroomLessonId id;
-    Time start;
-    Time end;
     boolean isHeld;
 
     public ClassroomLessonId getId() {
@@ -18,22 +16,6 @@ public class ClassroomLesson {
 
     public void setId(ClassroomLessonId id) {
         this.id = id;
-    }
-
-    public Time getStart() {
-        return start;
-    }
-
-    public void setStart(Time start) {
-        this.start = start;
-    }
-
-    public Time getEnd() {
-        return end;
-    }
-
-    public void setEnd(Time end) {
-        this.end = end;
     }
 
     public boolean isHeld() {

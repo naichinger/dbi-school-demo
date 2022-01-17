@@ -5,6 +5,8 @@ import at.htl.workloads.classroom.Classroom;
 import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -15,6 +17,8 @@ public class Student {
     LocalDateTime birthday;
     @ManyToOne
     Classroom classroom;
+    @OneToMany(mappedBy = "student")
+    List<Absence> absences = new ArrayList<>();
 
     public String getName() {
         return name;

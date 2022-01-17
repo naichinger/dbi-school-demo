@@ -12,8 +12,6 @@ public class Absence {
     @ManyToOne
     Student student;
     boolean justified;
-    LocalDateTime begin;
-    LocalDateTime end;
 
     public Long getId() {
         return id;
@@ -45,21 +43,5 @@ public class Absence {
 
     public void setJustified(boolean justified) {
         this.justified = justified;
-    }
-
-    public LocalDateTime getBegin() {
-        return begin;
-    }
-
-    public void setBegin(LocalDateTime begin) {
-        this.begin = begin;
-    }
-
-    public LocalDateTime getEnd() {
-        return end;
-    }
-
-    public void setEnd(LocalDateTime end) {
-        this.end = end;
     }
 }
