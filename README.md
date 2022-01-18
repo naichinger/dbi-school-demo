@@ -1,5 +1,15 @@
 # dbi-school-demo
 
-- create Entities - done
+- insert remaining table data via initBean
+- ~~create Entities - done~~
 - create CRUD functionality
-	* Classroom - done (add/update missing service references to get other entities) 
+	* others remaing
+	* ~~Classroom - done (add/update missing service references to get other entities)~~
+- ~~insert sample import.sql - done~~:
+	* department
+	* lesson
+	* classroom
+	* teacher
+	* student
+	* room
+
