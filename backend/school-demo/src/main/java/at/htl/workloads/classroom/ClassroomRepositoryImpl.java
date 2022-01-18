@@ -53,4 +53,15 @@ public class ClassroomRepositoryImpl implements ClassroomRepository {
         typedQuery.setParameter("DOW", dayOfWeek);
         return typedQuery.getResultList();
     }
+
+    @Override
+    public List<Lesson> findAllLessons() {
+        TypedQuery<Lesson> typedQuery = this.entityManager.createQuery("select l from Lesson l", Lesson.class);
+        return typedQuery.getResultList();
+    }
+
+    @Override
+    public void addClassroomLesson(ClassroomLesson classroomLesson) {
+        this.entityManager.persist(classroomLesson);
+    }
 }

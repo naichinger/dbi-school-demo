@@ -18,4 +18,8 @@ public interface ClassroomService {
     Classroom updateClassroom(Classroom classroom, String name, Long teacherId, Long roomId, List<Long> studentIds, List<Long> lessonIds, List<Long> testIds);
 
     List<ClassroomLesson> getLessonsForDayOfWeek(Classroom classroom, DayOfWeek dayOfWeek);
+
+    List<Lesson> findAllLessons();
+
+    void addClassroomLesson(ClassroomLesson classroomLesson);
 }

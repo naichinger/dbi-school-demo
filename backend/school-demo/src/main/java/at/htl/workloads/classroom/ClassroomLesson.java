@@ -15,7 +15,6 @@ public class ClassroomLesson {
     Long id;
     @ManyToOne
     Teacher teacher;
-    boolean isHeld;
     DayOfWeek dayOfWeek;
     LocalTime startTime;
     LocalTime endTime;
@@ -55,14 +54,6 @@ public class ClassroomLesson {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public boolean isHeld() {
-        return isHeld;
-    }
-
-    public void setHeld(boolean held) {
-        isHeld = held;
     }
 
     public DayOfWeek getDayOfWeek() {

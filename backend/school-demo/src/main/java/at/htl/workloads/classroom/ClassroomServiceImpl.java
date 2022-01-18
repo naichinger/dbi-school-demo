@@ -1,14 +1,11 @@
 package at.htl.workloads.classroom;
 
-import at.htl.model.ClassroomDTO;
 import at.htl.workloads.room.Room;
 import at.htl.workloads.student.Student;
+import at.htl.workloads.student.StudentService;
 import at.htl.workloads.teacher.Teacher;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +14,11 @@ import java.util.List;
 public class ClassroomServiceImpl implements ClassroomService {
 
     private final ClassroomRepository classroomRepository;
+    private final StudentService studentService;
 
-    public ClassroomServiceImpl(ClassroomRepository classroomRepository) {
+    public ClassroomServiceImpl(ClassroomRepository classroomRepository, StudentService studentService) {
         this.classroomRepository = classroomRepository;
+        this.studentService = studentService;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class ClassroomServiceImpl implements ClassroomService {
         //TODO: use other services to get entities
         Teacher teacher = null;
         Room room = null;
-        List<Student> students = new ArrayList<>();
+        List<Student> students = studentService.findByIds(studentIds);
         List<ClassroomLesson> lessons = new ArrayList<>();
         List<Test> tests = new ArrayList<>();
         Classroom classroom = Classroom.create(name, teacher, room, students, lessons, tests);
@@ -72,5 +71,15 @@ public class ClassroomServiceImpl implements ClassroomService {
     @Override
     public List<ClassroomLesson> getLessonsForDayOfWeek(Classroom classroom, DayOfWeek dayOfWeek) {
         return classroomRepository.getLessonsForDayOfWeek(classroom, dayOfWeek);
+    }
+
+    @Override
+    public List<Lesson> findAllLessons() {
+        return classroomRepository.findAllLessons();
+    }
+
+    @Override
+    public void addClassroomLesson(ClassroomLesson classroomLesson) {
+        classroomRepository.addClassroomLesson(classroomLesson);
     }
 }

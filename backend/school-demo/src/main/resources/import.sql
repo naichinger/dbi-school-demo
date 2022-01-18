@@ -1593,7 +1593,7 @@ insert into room(roomname) values ('Turnsaal HTL alt');
 insert into room(roomname) values ('BioLAB');
 insert into room(roomname) values ('Biolab');
 
-
+/*
 insert into classroomlesson(dayofweek, isheld, endtime, starttime, lesson_id, classroom_id, teacher_id)
 values (1, true, '08:00', '08:50', 1, 1, null);
 insert into classroomlesson(dayofweek, isheld, endtime, starttime, lesson_id, classroom_id, teacher_id)
@@ -1603,4 +1603,4 @@ values (1, true, '10:00', '10:50', 3, 1, null);
 insert into classroomlesson(dayofweek, isheld, endtime, starttime, lesson_id, classroom_id, teacher_id)
 values (1, true, '10:55', '11:45', 4, 1, null);
 insert into classroomlesson(dayofweek, isheld, endtime, starttime, lesson_id, classroom_id, teacher_id)
-values (1, true, '11:45', '12:35', 4, 1, null);
+values (1, true, '11:45', '12:35', 4, 1, null);*/
