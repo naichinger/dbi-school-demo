@@ -16,8 +16,11 @@ import java.util.List;
 @ApplicationScoped
 public class ClassroomServiceImpl implements ClassroomService {
 
-    @Inject
-    ClassroomRepository classroomRepository;
+    private final ClassroomRepository classroomRepository;
+
+    public ClassroomServiceImpl(ClassroomRepository classroomRepository) {
+        this.classroomRepository = classroomRepository;
+    }
 
     @Override
     public List<Classroom> findAll() {

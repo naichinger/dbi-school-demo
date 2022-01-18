@@ -18,8 +18,11 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ClassroomResource {
-    @Inject
-    ClassroomService classroomService;
+    private final ClassroomService classroomService;
+
+    public ClassroomResource(ClassroomService classroomService) {
+        this.classroomService = classroomService;
+    }
 
     @GET
     public Response findAll() {

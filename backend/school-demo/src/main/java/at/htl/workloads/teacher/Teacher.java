@@ -12,7 +12,8 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name;
+    String firstname;
+    String lastname;
     BigDecimal salary;
     @OneToMany(mappedBy = "teacher")
     List<ClassroomLesson> lessons = new ArrayList<>();
@@ -25,12 +26,20 @@ public class Teacher {
         this.lessons = lessons;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public Long getId() {
