@@ -11,6 +11,15 @@ public class Department {
     @ManyToOne
     DepartmentExecutive headOfDepartment;
 
+    public static Department create(String departmentName, DepartmentExecutive headOfDepartment) {
+        Department department = new Department();
+
+        department.setDepartmentName(departmentName);
+        department.setHeadOfDepartment(headOfDepartment);
+
+        return department;
+    }
+
     public Long getId() {
         return id;
     }

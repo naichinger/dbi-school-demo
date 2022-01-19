@@ -4,6 +4,7 @@
 - ~~create Entities - done~~
 - create CRUD functionality
 	* others remaing
+	* ~~Department - done~~
 	* ~~Classroom - done (add/update missing service references to get other entities)~~
 - ~~insert sample import.sql - done~~:
 	* department
