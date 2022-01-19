@@ -1593,6 +1593,19 @@ insert into room(roomname) values ('Turnsaal HTL alt');
 insert into room(roomname) values ('BioLAB');
 insert into room(roomname) values ('Biolab');
 
+insert into item(name) values ('Tisch');
+insert into item(name) values ('SmartBoard');
+insert into item(name) values ('Sessel');
+insert into item(name) values ('Waschbecken');
+insert into item(name) values ('Mistkübel');
+insert into item(name) values ('Computer');
+insert into item(name) values ('Uhr');
+insert into item(name) values ('Steckdose');
+insert into item(name) values ('Beamer');
+insert into item(name) values ('Garderobe');
+insert into item(name) values ('W-Lan Accesspoint');
+insert into item(name) values ('Lampe');
+insert into item(name) values ('Uhr');
 /*
 insert into classroomlesson(dayofweek, isheld, endtime, starttime, lesson_id, classroom_id, teacher_id)
 values (1, true, '08:00', '08:50', 1, 1, null);
