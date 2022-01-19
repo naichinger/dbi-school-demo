@@ -4,6 +4,10 @@ import at.htl.workloads.classroom.Classroom;
 import at.htl.workloads.classroom.ClassroomLesson;
 import at.htl.workloads.classroom.ClassroomService;
 import at.htl.workloads.classroom.Lesson;
+import at.htl.workloads.room.Item;
+import at.htl.workloads.room.Room;
+import at.htl.workloads.room.RoomItem;
+import at.htl.workloads.room.RoomService;
 import at.htl.workloads.student.Student;
 import at.htl.workloads.student.StudentService;
 import at.htl.workloads.teacher.Teacher;
@@ -31,12 +35,20 @@ public class InitBean {
     ClassroomService classroomService;
     @Inject
     TeacherService teacherService;
+    @Inject
+    RoomService roomService;
 
     @Transactional
     public void init(@Observes StartupEvent event) {
         //TODO: add algorithm to add sample data with existing data from import.sql
         addStudentsToClasses();
         addLessonsToClasses();
+        addItemsToRoom();
+    }
+
+    private void addItemsToRoom() {
+        List<Item> allItems = roomService.findAllItems();
+        List<Room> allClassrooms = roomService.findAll();
     }
 
     private void addStudentsToClasses() {
@@ -50,7 +62,6 @@ public class InitBean {
 
     private void addLessonsToClasses() {
         List<Classroom> allClassrooms = classroomService.findAll();
-        List<Teacher> allTeachers = teacherService.findAll();
         List<Lesson> allLessons = classroomService.findAllLessons();
 
         for (Classroom classroom : allClassrooms) {
@@ -85,12 +96,34 @@ public class InitBean {
                     classroomLesson.setDayOfWeek(dayOfWeek);
                     classroomLesson.setStartTime(lessonTime[0]);
                     classroomLesson.setEndTime(lessonTime[1]);
-                    classroomLesson.setTeacher(allTeachers.get(random.nextInt(allTeachers.size())));
-
+                    Teacher teacher = getFreeTeacher();
+                    classroomLesson.setTeacher(teacher);
+                    teacher.setIsFree(false);
                     classroomService.addClassroomLesson(classroomLesson);
                     //classroomLesson.set
                 }
+                setAllTeacherFree();
             }
         }
+    }
+
+    private void setAllTeacherFree(){
+        List<Teacher> allTeachers = teacherService.findAll();
+        if (allTeachers == null)
+            return;
+        for (Teacher t: allTeachers) {
+            t.setIsFree(true);
+        }
+    }
+
+    private Teacher getFreeTeacher(){
+        Random random = new Random();
+        List<Teacher> allTeachers = teacherService.findAll();
+        int tempTeacherId = random.nextInt(allTeachers.size());
+        Teacher teacher = allTeachers.get(tempTeacherId);
+        if (!teacher.isFree()){
+            return getFreeTeacher();
+        }
+        return teacher;
     }
 }

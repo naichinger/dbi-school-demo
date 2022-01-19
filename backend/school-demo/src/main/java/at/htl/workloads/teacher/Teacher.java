@@ -15,8 +15,17 @@ public class Teacher {
     String firstname;
     String lastname;
     BigDecimal salary;
+    boolean isFree;
     @OneToMany(mappedBy = "teacher")
     List<ClassroomLesson> lessons = new ArrayList<>();
+
+    public boolean isFree() {
+        return isFree;
+    }
+
+    public void setIsFree(boolean isFree) {
+        this.isFree = isFree;
+    }
 
     public List<ClassroomLesson> getLessons() {
         return lessons;
