@@ -13,6 +13,12 @@ public class Room {
     @OneToMany(mappedBy = "id.room")
     List<RoomItem> items = new ArrayList<>();
 
+    public static Room create(String roomName) {
+        Room room = new Room();
+        room.setRoomName(roomName);
+        return room;
+    }
+
     public String getRoomName() {
         return roomName;
     }

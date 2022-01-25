@@ -11,11 +11,13 @@ public interface ClassroomService {
 
     Classroom findById(long id);
 
-    Classroom addClassroom(String name, Long teacherId, Long roomId, List<Long> studentIds, List<Long> lessonIds, List<Long> testIds);
+    Classroom addClassroom(String name, Long teacherId, Long roomId, List<Long> studentIds);
 
     void removeClassroom(Classroom classroom);
 
-    Classroom updateClassroom(Classroom classroom, String name, Long teacherId, Long roomId, List<Long> studentIds, List<Long> lessonIds, List<Long> testIds);
+    Classroom updateClassroom(Classroom classroom, String name, Long teacherId, Long roomId, List<Long> studentIds);
+
+    Classroom updateClassroom(Classroom classroom);
 
     List<ClassroomLesson> getLessonsForDayOfWeek(Classroom classroom, DayOfWeek dayOfWeek);
 

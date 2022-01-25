@@ -57,4 +57,12 @@ public class Teacher {
     public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
+
+    public static Teacher create(String firstname, String lastname, BigDecimal salary){
+        Teacher teacher = new Teacher();
+        teacher.setFirstname(firstname);
+        teacher.setLastname(lastname);
+        teacher.setSalary(salary);
+        return teacher;
+    }
 }

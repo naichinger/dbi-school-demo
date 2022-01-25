@@ -10,26 +10,8 @@ import java.util.List;
 public class ClassroomDTO {
     String name;
     List<Long> studentIds = new ArrayList<>();
-    List<Long> lessonIds = new ArrayList<>();
-    List<Long> testIds = new ArrayList<>();
     Long teacherId;
     Long roomId;
-
-    public List<Long> getLessonIds() {
-        return lessonIds;
-    }
-
-    public void setLessonIds(List<Long> lessonIds) {
-        this.lessonIds = lessonIds;
-    }
-
-    public List<Long> getTestIds() {
-        return testIds;
-    }
-
-    public void setTestIds(List<Long> testIds) {
-        this.testIds = testIds;
-    }
 
     public String getName() {
         return name;

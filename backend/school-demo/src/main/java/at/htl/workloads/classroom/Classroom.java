@@ -30,16 +30,12 @@ public class Classroom {
             String name,
             Teacher teacher,
             Room room,
-            List<Student> students,
-            List<ClassroomLesson> lessons,
-            List<Test> tests) {
+            List<Student> students) {
         Classroom classroom = new Classroom();
         classroom.setName(name);
         classroom.setFormTeacher(teacher);
         classroom.setClassroom(room);
         classroom.setStudents(students);
-        classroom.setLessons(lessons);
-        classroom.setTests(tests);
         return classroom;
     }
 

@@ -1,9 +1,11 @@
 package at.htl.workloads.classroom;
 
 import at.htl.workloads.room.Room;
+import at.htl.workloads.room.RoomService;
 import at.htl.workloads.student.Student;
 import at.htl.workloads.student.StudentService;
 import at.htl.workloads.teacher.Teacher;
+import at.htl.workloads.teacher.TeacherService;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.time.DayOfWeek;
@@ -15,10 +17,14 @@ public class ClassroomServiceImpl implements ClassroomService {
 
     private final ClassroomRepository classroomRepository;
     private final StudentService studentService;
+    private final TeacherService teacherService;
+    private final RoomService roomService;
 
-    public ClassroomServiceImpl(ClassroomRepository classroomRepository, StudentService studentService) {
+    public ClassroomServiceImpl(ClassroomRepository classroomRepository, StudentService studentService, TeacherService teacherService, RoomService roomService) {
         this.classroomRepository = classroomRepository;
         this.studentService = studentService;
+        this.teacherService = teacherService;
+        this.roomService = roomService;
     }
 
     @Override
@@ -32,14 +38,12 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public Classroom addClassroom(String name, Long teacherId, Long roomId, List<Long> studentIds, List<Long> lessonIds, List<Long> testIds) {
+    public Classroom addClassroom(String name, Long teacherId, Long roomId, List<Long> studentIds) {
         //TODO: use other services to get entities
-        Teacher teacher = null;
-        Room room = null;
+        Teacher teacher = teacherService.findById(teacherId);
+        Room room = roomService.findById(roomId);
         List<Student> students = studentService.findByIds(studentIds);
-        List<ClassroomLesson> lessons = new ArrayList<>();
-        List<Test> tests = new ArrayList<>();
-        Classroom classroom = Classroom.create(name, teacher, room, students, lessons, tests);
+        Classroom classroom = Classroom.create(name, teacher, room, students);
         classroomRepository.add(classroom);
         return classroom;
     }
@@ -50,21 +54,22 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public Classroom updateClassroom(Classroom classroom, String name, Long teacherId, Long roomId, List<Long> studentIds, List<Long> lessonIds, List<Long> testIds) {
+    public Classroom updateClassroom(Classroom classroom, String name, Long teacherId, Long roomId, List<Long> studentIds) {
         //TODO: use other services to get entities
-        Teacher teacher = null;
-        Room room = null;
-        List<Student> students = new ArrayList<>();
-        List<ClassroomLesson> lessons = new ArrayList<>();
-        List<Test> tests = new ArrayList<>();
+        Teacher teacher = teacherService.findById(teacherId);
+        Room room = roomService.findById(roomId);
+        List<Student> students = studentService.findByIds(studentIds);
 
         classroom.setName(name);
         classroom.setFormTeacher(teacher);
         classroom.setClassroom(room);
         classroom.setStudents(students);
-        classroom.setLessons(lessons);
-        classroom.setTests(tests);
 
+        return this.classroomRepository.update(classroom);
+    }
+
+    @Override
+    public Classroom updateClassroom(Classroom classroom) {
         return this.classroomRepository.update(classroom);
     }
 

@@ -42,9 +42,7 @@ public class ClassroomResource {
                 classroomDTO.getName(),
                 classroomDTO.getTeacherId(),
                 classroomDTO.getRoomId(),
-                classroomDTO.getStudentIds(),
-                classroomDTO.getLessonIds(),
-                classroomDTO.getTestIds())
+                classroomDTO.getStudentIds())
         ).build();
     }
 
@@ -62,9 +60,7 @@ public class ClassroomResource {
                 classroomDTO.getName(),
                 classroomDTO.getTeacherId(),
                 classroomDTO.getRoomId(),
-                classroomDTO.getStudentIds(),
-                classroomDTO.getLessonIds(),
-                classroomDTO.getTestIds())).build();
+                classroomDTO.getStudentIds())).build();
     }
 
     @POST
