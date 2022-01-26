@@ -4,10 +4,10 @@
 -- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-2');
 -- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-3');
 
-insert into departmentexecutive(name, title) values ('Department executive nr 1', 'Biomedizin & Gesundheitstechnik Abteilungsvorstand');
-insert into departmentexecutive(name, title) values ('Department executive nr 2', 'Elektronik Abteilungsvorstand');
-insert into departmentexecutive(name, title) values ('Department executive nr 3', 'Informatik Abteilungsvorstand');
-insert into departmentexecutive(name, title) values ('Department executive nr 4', 'IT Medientechnik Abteilungsvorstand');
+insert into departmentexecutive(firstname, lastname, title) values ('Department', 'executive nr 1', 'Biomedizin & Gesundheitstechnik Abteilungsvorstand');
+insert into departmentexecutive(firstname, lastname, title) values ('Department', 'executive nr 2', 'Elektronik Abteilungsvorstand');
+insert into departmentexecutive(firstname, lastname, title) values ('Department', 'executive nr 3', 'Informatik Abteilungsvorstand');
+insert into departmentexecutive(firstname, lastname, title) values ('Department', 'executive nr 4', 'IT Medientechnik Abteilungsvorstand');
 
 insert into department(departmentname, headofdepartment_id) VALUES ('Biomedizin & Gesundheitstechnik', 1);
 insert into department(departmentname, headofdepartment_id) VALUES ('Elektronik', 2);
