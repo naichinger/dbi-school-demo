@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class DepartmentRepositoryImpl implements DepartmentRepository {
@@ -32,6 +33,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     }
 
     @Override
+    @Transactional
     public Department add(Department department) {
         entityManager.persist(department);
         return department;
@@ -43,6 +45,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     }
 
     @Override
+    @Transactional
     public Department update(Department department) {
         return entityManager.merge(department);
     }

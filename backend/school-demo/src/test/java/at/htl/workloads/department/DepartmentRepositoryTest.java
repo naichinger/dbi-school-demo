@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 @QuarkusTest
@@ -30,6 +31,7 @@ public class DepartmentRepositoryTest {
         ex.setTitle("Dipl.Ing.");
         department.setHeadOfDepartment(ex2);
         assertThatCode(()->departmentRepository.update(department)).doesNotThrowAnyException();
-
+        var loadedHeadOfDepartmentEx = departmentRepository.findExecutiveById(ex.id);
+        assertThat(loadedHeadOfDepartmentEx).isNotNull().isNotEqualTo(ex2);
     }
 }

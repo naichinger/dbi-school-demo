@@ -3,6 +3,7 @@ package at.htl.workloads.classroom;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.time.DayOfWeek;
 import java.util.List;
 

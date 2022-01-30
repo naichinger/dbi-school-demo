@@ -8,7 +8,7 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String departmentName;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     DepartmentExecutive headOfDepartment;
 
     public static Department create(String departmentName, DepartmentExecutive headOfDepartment) {
