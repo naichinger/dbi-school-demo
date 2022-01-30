@@ -21,7 +21,7 @@ public class ClassroomLesson {
     @ManyToOne
     @JsonbTransient
     Classroom classroom;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     Lesson lesson;
 
     public Classroom getClassroom() {

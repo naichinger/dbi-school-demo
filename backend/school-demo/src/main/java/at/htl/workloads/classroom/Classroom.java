@@ -17,13 +17,13 @@ public class Classroom {
     String name;
     @OneToMany(mappedBy = "classroom", cascade = CascadeType.PERSIST)
     List<Student> students = new ArrayList<>();
-    @OneToMany(mappedBy = "classroom")
+    @OneToMany(mappedBy = "classroom", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     List<ClassroomLesson> lessons = new ArrayList<>();
     @OneToMany
     List<Test> tests = new ArrayList<>();
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     Teacher formTeacher;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     Room classroom;
 
     public static Classroom create(
