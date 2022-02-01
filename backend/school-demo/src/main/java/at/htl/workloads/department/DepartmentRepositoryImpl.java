@@ -33,7 +33,6 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     }
 
     @Override
-    @Transactional
     public Department add(Department department) {
         entityManager.persist(department);
         return department;
@@ -45,7 +44,6 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     }
 
     @Override
-    @Transactional
     public Department update(Department department) {
         return entityManager.merge(department);
     }

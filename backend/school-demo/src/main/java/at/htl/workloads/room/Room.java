@@ -10,7 +10,7 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String roomName;
-    @OneToMany(mappedBy = "id.room")
+    @OneToMany(mappedBy = "id.room", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     List<RoomItem> items = new ArrayList<>();
 
     public static Room create(String roomName) {

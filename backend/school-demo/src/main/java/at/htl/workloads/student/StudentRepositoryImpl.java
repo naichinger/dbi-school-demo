@@ -3,6 +3,7 @@ package at.htl.workloads.student;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -24,6 +25,24 @@ public class StudentRepositoryImpl implements StudentRepository {
         TypedQuery<Student> query = this.entityManager.createQuery("select s from Student s where s.id=:ID", Student.class);
         query.setParameter("ID", studentId);
         return query.getSingleResult();
+    }
+
+    @Override
+    public List<Student> findAllStudentsInClass(Long classId) {
+        TypedQuery<Student> query = this.entityManager.createQuery("select s from Student s where s.classroom.id = :ID", Student.class);
+        query.setParameter("ID", classId);
+        return query.getResultList();
+    }
+
+    @Override
+    public void remove(Student student) {
+         entityManager.remove(student);
+    }
+
+    @Override
+    public Student add(Student student) {
+        entityManager.persist(student);
+        return student;
     }
 
     @Override

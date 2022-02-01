@@ -1,5 +1,6 @@
 package at.htl.workloads.department;
 
+import at.htl.IntTestBase;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 @QuarkusTest
-public class DepartmentRepositoryTest {
+public class DepartmentRepositoryTest extends IntTestBase {
     @Inject
     DepartmentRepository departmentRepository;
 

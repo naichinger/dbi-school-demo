@@ -1,5 +1,6 @@
 package at.htl.workloads.teacher;
 
+import at.htl.IntTestBase;
 import at.htl.workloads.classroom.Classroom;
 import at.htl.workloads.classroom.ClassroomLesson;
 import at.htl.workloads.classroom.Lesson;
@@ -18,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 @QuarkusTest
-public class TeacherRepositoryTest {
+public class TeacherRepositoryTest extends IntTestBase {
     @Inject
     TeacherRepository teacherRepository;
     @Test
