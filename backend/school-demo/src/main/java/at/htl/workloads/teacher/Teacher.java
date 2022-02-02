@@ -2,6 +2,7 @@ package at.htl.workloads.teacher;
 
 import at.htl.workloads.classroom.ClassroomLesson;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Teacher {
     String lastname;
     BigDecimal salary;
     @OneToMany(mappedBy = "teacher")
+    @JsonbTransient
     List<ClassroomLesson> lessons = new ArrayList<>();
 
     public List<ClassroomLesson> getLessons() {

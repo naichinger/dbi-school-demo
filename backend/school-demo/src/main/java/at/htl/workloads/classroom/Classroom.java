@@ -15,15 +15,18 @@ public class Classroom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
+
     @OneToMany(mappedBy = "classroom", cascade = CascadeType.PERSIST)
     List<Student> students = new ArrayList<>();
-    @OneToMany(mappedBy = "classroom")
+
+    @OneToMany(mappedBy = "classroom", cascade = CascadeType.PERSIST)
     List<ClassroomLesson> lessons = new ArrayList<>();
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     List<Test> tests = new ArrayList<>();
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JsonbTransient
     Teacher formTeacher;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     Room classroom;
 
     public static Classroom create(

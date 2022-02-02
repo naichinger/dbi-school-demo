@@ -13,15 +13,17 @@ public class ClassroomLesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     Teacher teacher;
     DayOfWeek dayOfWeek;
     LocalTime startTime;
     LocalTime endTime;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JsonbTransient
     Classroom classroom;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
     Lesson lesson;
 
     public Classroom getClassroom() {
