@@ -85,12 +85,34 @@ public class InitBean {
                     classroomLesson.setDayOfWeek(dayOfWeek);
                     classroomLesson.setStartTime(lessonTime[0]);
                     classroomLesson.setEndTime(lessonTime[1]);
-                    classroomLesson.setTeacher(allTeachers.get(random.nextInt(allTeachers.size())));
-
+                    Teacher teacher = getFreeTeacher();
+                    classroomLesson.setTeacher(teacher);
+                    teacher.setIsFree(false);
                     classroomService.addClassroomLesson(classroomLesson);
                     //classroomLesson.set
                 }
+                setAllTeacherFree();
             }
         }
+    }
+
+    private void setAllTeacherFree(){
+        List<Teacher> allTeachers = teacherService.findAll();
+        if (allTeachers == null)
+            return;
+        for (Teacher t: allTeachers) {
+            t.setIsFree(true);
+        }
+    }
+
+    private Teacher getFreeTeacher(){
+        Random random = new Random();
+        List<Teacher> allTeachers = teacherService.findAll();
+        int tempTeacherId = random.nextInt(allTeachers.size());
+        Teacher teacher = allTeachers.get(tempTeacherId);
+        if (!teacher.isFree()){
+            return getFreeTeacher();
+        }
+        return teacher;
     }
 }
