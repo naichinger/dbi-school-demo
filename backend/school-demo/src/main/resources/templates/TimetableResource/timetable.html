@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stundenplan</title>
+</head>
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+<body>
+<h1>Stundenplan der Klasse: {className}</h1>
+
+<table style="width:100%">
+    <tr>
+        <th>Montag</th>
+        <th>Dienstag</th>
+        <th>Mittwoch</th>
+        <th>Donnerstag</th>
+        <th>Freitag</th>
+    </tr>
+
+    {#for list in listlist}
+
+        <tr>
+
+        {#for item in list}
+
+            <td>{item}</td>
+
+        {/for}
+
+        </tr>
+
+    {/for}
+</table>
+
+
+
+</body>
+</html>

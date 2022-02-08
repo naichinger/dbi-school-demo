@@ -94,4 +94,12 @@ public class Classroom {
     public void setLessons(List<ClassroomLesson> lessons) {
         this.lessons = lessons;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%s Schüler)",
+                    getName(),
+                    getStudents().stream().count()
+                );
+    }
 }
