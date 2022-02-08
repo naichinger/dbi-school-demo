@@ -97,7 +97,7 @@ public class Classroom {
 
     @Override
     public String toString() {
-        return String.format("%s (%s Schüler)",
+        return String.format("%s",
                     getName(),
                     getStudents().stream().count()
                 );

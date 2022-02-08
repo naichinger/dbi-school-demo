@@ -23,7 +23,11 @@ public class TimetableResource {
 
     @CheckedTemplate
     public static class Templates{
-        public static native TemplateInstance timetable(List<List<ClassroomLesson>> listlist, String className);
+        public static native TemplateInstance timetable(
+                List<List<ClassroomLesson>> listlist,
+                String className,
+                List<Classroom> classes
+        );
     }
 
     @Path("classroom")
@@ -32,7 +36,11 @@ public class TimetableResource {
     public TemplateInstance getTimetableForClassRoomPage(
             @QueryParam("classroomID") int classroomID
     ){
-        return Templates.timetable(repo.getTimetable(classroomID), repo.findById(classroomID).getName());
+        return Templates.timetable(
+                repo.getTimetable(classroomID),
+                repo.findById(classroomID).getName(),
+                repo.findAll()
+        );
         //return Response.ok(repo.getTimetable(classroomID)).build();
         //return Response.ok(repo.findAll()).build();
     }
