@@ -1,0 +1,9 @@
+GET http://localhost:8080/api/classroom
+
+###
+
+GET http://localhost:8080/api/classroom/3
+
+###
+
+GET http://localhost:8080/api/classroom/3/lesson/MONDAY

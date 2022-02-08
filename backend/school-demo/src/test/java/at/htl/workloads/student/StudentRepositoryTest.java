@@ -8,6 +8,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class StudentRepositoryTest extends IntTestBase {
     @Inject
     StudentRepository studentRepository;
     @Test
+    @Transactional
     public void addStudent_getAll_simple_success() {
         Teacher teacher = new Teacher();
         teacher.setFirstname("Anna");
