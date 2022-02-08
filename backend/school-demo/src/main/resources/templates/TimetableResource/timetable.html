@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stundenplan</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+</head>
+<!--
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+-->
+<body>
+<h1>Timetable </h1>
+
+<form action="/api/timetable" method="post" name="timetableForm" enctype="application/x-www-form-urlencoded">
+
+    <label for="classOption">Klasse: </label>
+    <select name="classOption" id="classOption">
+        <option disabled value="">Klasse</option>
+
+        {#for c in classes}
+            <option value="{c.id}">{c}</option>
+        {/for}
+    </select>
+
+    <input type="submit" value="Submit">
+</form>
+
+<!--
+<div class="container">
+
+    <div class="row">
+        <div class="column">Montag</div>
+        <div class="column">Dienstag</div>
+        <div class="column">Mittwoch</div>
+        <div class="column">Donnerstag</div>
+        <div class="column">Freitag</div>
+    </div>
+</div>
+-->
+
+<table>
+    {#for list in listlist}
+        <tr>
+            {#for item in list}
+                <td>
+                    {item}
+                </td>
+            {/for}
+        </tr>
+    {/for}
+</table>
+
+
+</body>
+</html>

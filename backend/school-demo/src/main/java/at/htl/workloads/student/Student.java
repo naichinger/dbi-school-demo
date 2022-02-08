@@ -17,7 +17,7 @@ public class Student {
     String firstname;
     String lastname;
     LocalDateTime birthday;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JsonbTransient
     Classroom classroom;
     @OneToMany(mappedBy = "student")

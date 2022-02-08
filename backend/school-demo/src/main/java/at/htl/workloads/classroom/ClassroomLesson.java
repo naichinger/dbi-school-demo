@@ -14,6 +14,7 @@ public class ClassroomLesson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @ManyToOne
+    @JsonbTransient
     Teacher teacher;
     DayOfWeek dayOfWeek;
     LocalTime startTime;
@@ -22,6 +23,7 @@ public class ClassroomLesson {
     @JsonbTransient
     Classroom classroom;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonbTransient
     Lesson lesson;
 
     public Classroom getClassroom() {
@@ -78,5 +80,12 @@ public class ClassroomLesson {
 
     public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s",
+                getLesson().name
+        );
     }
 }

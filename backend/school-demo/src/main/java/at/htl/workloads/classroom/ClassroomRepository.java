@@ -19,4 +19,6 @@ public interface ClassroomRepository {
     List<Lesson> findAllLessons();
 
     void addClassroomLesson(ClassroomLesson classroomLesson);
+
+    List<List<ClassroomLesson>> getTimetable(long classroomID);
 }
