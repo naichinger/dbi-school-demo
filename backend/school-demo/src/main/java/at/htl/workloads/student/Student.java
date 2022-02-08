@@ -2,6 +2,7 @@ package at.htl.workloads.student;
 
 import at.htl.workloads.classroom.Classroom;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -16,7 +17,8 @@ public class Student {
     String firstname;
     String lastname;
     LocalDateTime birthday;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne
+    @JsonbTransient
     Classroom classroom;
     @OneToMany(mappedBy = "student")
     List<Absence> absences = new ArrayList<>();
