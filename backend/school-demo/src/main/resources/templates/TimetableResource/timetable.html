@@ -31,14 +31,20 @@
     <input type="submit" value="Submit">
 </form>
 
-<table style="width:100%">
-    <tr>
-        <th>Montag</th>
-        <th>Dienstag</th>
-        <th>Mittwoch</th>
-        <th>Donnerstag</th>
-        <th>Freitag</th>
-    </tr>
+<!--
+<div class="container">
+
+    <div class="row">
+        <div class="column">Montag</div>
+        <div class="column">Dienstag</div>
+        <div class="column">Mittwoch</div>
+        <div class="column">Donnerstag</div>
+        <div class="column">Freitag</div>
+    </div>
+</div>
+-->
+
+<table>
     {#for list in listlist}
         <tr>
             {#for item in list}
@@ -49,7 +55,6 @@
         </tr>
     {/for}
 </table>
-
 
 
 </body>
