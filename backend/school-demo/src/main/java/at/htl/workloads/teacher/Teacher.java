@@ -19,13 +19,6 @@ public class Teacher {
     @OneToMany(mappedBy = "teacher")
     @JsonbTransient
     List<ClassroomLesson> lessons = new ArrayList<>();
-    Boolean isFree;
-
-    public boolean isFree() {
-        return isFree;
-    }
-
-    public void setIsFree(Boolean isFree) {this.isFree = isFree;}
 
     public List<ClassroomLesson> getLessons() {
         return lessons;
