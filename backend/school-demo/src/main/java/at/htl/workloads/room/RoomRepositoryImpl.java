@@ -2,6 +2,7 @@ package at.htl.workloads.room;
 
 
 import at.htl.workloads.classroom.Classroom;
+import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -15,6 +16,8 @@ public class RoomRepositoryImpl implements RoomRepository {
 
     @Inject
     EntityManager entityManager;
+    @Inject
+    Logger LOG;
 
     @Override
     public List<Room> findAll() {
@@ -58,5 +61,13 @@ public class RoomRepositoryImpl implements RoomRepository {
     @Override
     public void removeItem(Item item) {
         entityManager.remove(item);
+    }
+
+    @Override
+    public long getMaxRoomId() {
+        long id = this.entityManager.createQuery("select max(id) from Room", Long.class)
+                .getSingleResult();
+        LOG.error(id);
+        return id;
     }
 }

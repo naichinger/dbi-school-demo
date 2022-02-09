@@ -4,10 +4,13 @@ import at.htl.workloads.classroom.Classroom;
 import at.htl.workloads.classroom.ClassroomLesson;
 import at.htl.workloads.classroom.ClassroomService;
 import at.htl.workloads.classroom.Lesson;
+import at.htl.workloads.room.Room;
+import at.htl.workloads.room.RoomService;
 import at.htl.workloads.student.Student;
 import at.htl.workloads.student.StudentService;
 import at.htl.workloads.teacher.Teacher;
 import at.htl.workloads.teacher.TeacherService;
+import io.quarkus.logging.Log;
 import io.quarkus.runtime.StartupEvent;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -31,6 +34,8 @@ public class InitBean {
     ClassroomService classroomService;
     @Inject
     TeacherService teacherService;
+    @Inject
+    RoomService roomService;
 
     @Transactional
     public void init(@Observes StartupEvent event) {
@@ -53,7 +58,23 @@ public class InitBean {
         List<Teacher> allTeachers = teacherService.findAll();
         List<Lesson> allLessons = classroomService.findAllLessons();
 
+        long maxTeacherId = teacherService.getMaxTeacherId();
+        long maxRoomId = roomService.getMaxRoomId();
+
         for (Classroom classroom : allClassrooms) {
+
+            Random rand = new Random();
+
+            classroom.setFormTeacher(
+                    teacherService.findById(rand.nextInt(
+                            Math.toIntExact(maxTeacherId-1))+1
+            ));
+
+            classroom.setClassroom(roomService.findById(
+                    rand.nextInt(Math.toIntExact(maxRoomId-1))+1
+            ));
+
+
             for (DayOfWeek dayOfWeek : DayOfWeek.values()) {
                 if (dayOfWeek != DayOfWeek.SATURDAY && dayOfWeek != DayOfWeek.SUNDAY) {
 

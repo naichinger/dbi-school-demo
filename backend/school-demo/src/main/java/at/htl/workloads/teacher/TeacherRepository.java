@@ -12,4 +12,6 @@ public interface TeacherRepository {
     void remove(Teacher teacher);
 
     Teacher update(Teacher teacher);
+
+    long getMaxTeacherId();
 }

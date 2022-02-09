@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import java.util.List;
 
 @ApplicationScoped
-public class RoomServiceImpl implements RoomService {
+public class  RoomServiceImpl implements RoomService {
 
     private final RoomRepository roomRepository;
 
@@ -65,5 +65,10 @@ public class RoomServiceImpl implements RoomService {
     public Item updateItem(Item item, String itemName) {
         item.setName(itemName);
         return item;
+    }
+
+    @Override
+    public long getMaxRoomId() {
+        return roomRepository.getMaxRoomId();
     }
 }

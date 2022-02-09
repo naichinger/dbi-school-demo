@@ -21,4 +21,5 @@ public interface RoomService {
 
     Item updateItem(Item item, String itemName);
 
+    long getMaxRoomId();
 }

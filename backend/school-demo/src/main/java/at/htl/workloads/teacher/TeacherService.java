@@ -15,4 +15,6 @@ public interface TeacherService {
     void removeTeacher(Teacher teacher);
 
     Teacher updateTeacher(Teacher teacher, String firstname, String lastname, BigDecimal salary);
+
+    long getMaxTeacherId();
 }

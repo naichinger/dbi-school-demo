@@ -16,4 +16,6 @@ public interface RoomRepository {
     Item findByItemId(long id);
 
     void removeItem(Item item);
+
+    long getMaxRoomId();
 }

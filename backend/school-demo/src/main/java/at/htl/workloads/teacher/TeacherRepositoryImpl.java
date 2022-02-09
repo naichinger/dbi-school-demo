@@ -1,8 +1,10 @@
 package at.htl.workloads.teacher;
 
 import at.htl.workloads.student.Student;
+import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
@@ -11,6 +13,9 @@ import java.util.List;
 @ApplicationScoped
 public class TeacherRepositoryImpl implements TeacherRepository {
     private final EntityManager entityManager;
+
+    @Inject
+    Logger LOG;
 
     public TeacherRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -42,5 +47,13 @@ public class TeacherRepositoryImpl implements TeacherRepository {
     @Override
     public Teacher update(Teacher teacher) {
         return null;
+    }
+
+    @Override
+    public long getMaxTeacherId() {
+        long id = this.entityManager.createQuery("select max(id) from Teacher", Long.class)
+                .getSingleResult();
+        LOG.error(id);
+        return id;
     }
 }

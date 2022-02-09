@@ -50,4 +50,9 @@ public class TeacherServiceImpl implements TeacherService {
         teacher.setSalary(salary);
         return teacherRepository.update(teacher);
     }
+
+    @Override
+    public long getMaxTeacherId() {
+        return teacherRepository.getMaxTeacherId();
+    }
 }
