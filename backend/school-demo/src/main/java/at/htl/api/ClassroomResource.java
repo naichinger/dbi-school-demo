@@ -1,5 +1,6 @@
 package at.htl.api;
 
+import at.htl.model.StudentCountDTO;
 import at.htl.model.TeacherHourCountDTO;
 import at.htl.workloads.classroom.Classroom;
 import at.htl.workloads.classroom.ClassroomService;
@@ -10,7 +11,6 @@ import io.quarkus.qute.TemplateInstance;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/classroom")
@@ -25,7 +25,7 @@ public class ClassroomResource {
     @CheckedTemplate
     public static class Templates{
         public static native TemplateInstance classroom(List<Classroom> classes);
-        public static native TemplateInstance classWithStudentCount();
+        public static native TemplateInstance classWithStudentCount(List<StudentCountDTO> classWithStudentCounts);
         public static native TemplateInstance teacherWithStudentCount(
                 List<TeacherHourCountDTO> teacherWithStudentsCount,
                 List<Teacher> teachers,
@@ -42,8 +42,10 @@ public class ClassroomResource {
     @GET
     @Path("/studentcount/")
     public TemplateInstance getClassWithStudentCountPage(){
-        return Templates.classWithStudentCount();
+        return Templates.classWithStudentCount(classroomService.getClassWithStudentCount());
     }
+
+
     @GET
     @Path("/teachercount/")
     public TemplateInstance getTeacherWithStudentCountPage(

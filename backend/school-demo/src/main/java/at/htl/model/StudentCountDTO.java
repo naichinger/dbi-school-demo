@@ -12,4 +12,28 @@ public class StudentCountDTO {
         this.c = c;
         StudentCound = studentCound;
     }
+
+    public Classroom getC() {
+        return c;
+    }
+
+    public void setC(Classroom c) {
+        this.c = c;
+    }
+
+    public Long getStudentCound() {
+        return StudentCound;
+    }
+
+    public void setStudentCound(Long studentCound) {
+        StudentCound = studentCound;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s",
+                c.getName(),
+                getStudentCound().toString()
+                );
+    }
 }

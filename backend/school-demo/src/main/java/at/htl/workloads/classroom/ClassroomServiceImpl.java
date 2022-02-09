@@ -1,5 +1,6 @@
 package at.htl.workloads.classroom;
 
+import at.htl.model.StudentCountDTO;
 import at.htl.model.TeacherHourCountDTO;
 import at.htl.workloads.room.Room;
 import at.htl.workloads.room.RoomService;
@@ -92,5 +93,10 @@ public class ClassroomServiceImpl implements ClassroomService {
     @Override
     public List<TeacherHourCountDTO> getTeacherWithStudentsCount(Long TeacherId) {
         return classroomRepository.getTeacherWithStudentsCount(TeacherId);
+    }
+
+    @Override
+    public List<StudentCountDTO> getClassWithStudentCount() {
+        return classroomRepository.getClassWithStudentCount();
     }
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StudentCount</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <h1>Klassen mit der Anzahl der Schüler*innen darin</h1>
+
+    <table>
+        <tr>
+            <td>Klasse</td>
+            <td>Anzahl</td>
+        </tr>
+
+        {#for cws in classWithStudentCounts}
+            <tr>
+                <td>{cws.getC().getName()}</td>
+                <td>{cws.getStudentCound()}</td>
+            </tr>
+        {/for}
+
+    </table>
+</div>
+
+</body>
+</html>

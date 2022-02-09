@@ -1,6 +1,7 @@
 package at.htl.workloads.classroom;
 
 import at.htl.model.ClassroomDTO;
+import at.htl.model.StudentCountDTO;
 import at.htl.model.TeacherHourCountDTO;
 
 import java.net.URI;
@@ -27,4 +28,6 @@ public interface ClassroomService {
     void addClassroomLesson(ClassroomLesson classroomLesson);
 
     List<TeacherHourCountDTO> getTeacherWithStudentsCount(Long TeacherId);
+
+    List<StudentCountDTO> getClassWithStudentCount();
 }
