@@ -94,7 +94,9 @@ public class ClassroomRepositoryImpl implements ClassroomRepository {
     public List<StudentCountDTO> getClassWithStudentCount() {
 
         TypedQuery<StudentCountDTO> query =  entityManager.createQuery(
-                "Select new at.htl.model.StudentCountDTO(c, count(c)) from Student s join s.classroom c group by c",
+                "Select new at.htl.model.StudentCountDTO(c, count(c))" +
+                        " from Student s join s.classroom c" +
+                        " group by c",
                 StudentCountDTO.class
         );
 
@@ -105,7 +107,9 @@ public class ClassroomRepositoryImpl implements ClassroomRepository {
     public List<TeacherHourCountDTO> getTeacherWithStudentsCount(Long TeacherId) {
 
         TypedQuery<TeacherHourCountDTO> query = entityManager.createQuery(
-                "select new at.htl.model.TeacherHourCountDTO(c.name, count(c)) from ClassroomLesson cl join cl.classroom c where cl.teacher.id=?1 group by c.name",
+                "select new at.htl.model.TeacherHourCountDTO(c.name, count(c))" +
+                        " from ClassroomLesson cl join cl.classroom c" +
+                        " where cl.teacher.id=?1 group by c.name",
                 TeacherHourCountDTO.class
         ).setParameter(1, TeacherId);
 
