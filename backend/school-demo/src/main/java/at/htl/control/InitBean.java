@@ -55,43 +55,46 @@ public class InitBean {
 
         for (Classroom classroom : allClassrooms) {
             for (DayOfWeek dayOfWeek : DayOfWeek.values()) {
-                Random random = new Random();
+                if (dayOfWeek != DayOfWeek.SATURDAY && dayOfWeek != DayOfWeek.SUNDAY) {
 
-                List<LocalTime[]> lessonTimes = new LinkedList<>();
-                LocalTime current = LocalTime.of(8, 0);
+                    Random random = new Random();
 
-                for (int i = 0; i < 8; i++) {
-                    int minute = current.getMinute() + 50;
-                    int hour = current.getHour() + (minute >= 60 ? 1 : 0);
-                    minute = minute % 60;
+                    List<LocalTime[]> lessonTimes = new LinkedList<>();
+                    LocalTime current = LocalTime.of(8, 0);
 
-                    LocalTime start = LocalTime.of(current.getHour(), current.getMinute());
-                    LocalTime end = LocalTime.of(hour, minute);
+                    for (int i = 0; i < 8; i++) {
+                        int minute = current.getMinute() + 50;
+                        int hour = current.getHour() + (minute >= 60 ? 1 : 0);
+                        minute = minute % 60;
 
-                    lessonTimes.add(new LocalTime[]{start, end});
+                        LocalTime start = LocalTime.of(current.getHour(), current.getMinute());
+                        LocalTime end = LocalTime.of(hour, minute);
 
-                    minute = minute + 5;
-                    hour = hour + (minute >= 60 ? 1 : 0);
-                    minute = minute % 60;
+                        lessonTimes.add(new LocalTime[]{start, end});
 
-                    current = LocalTime.of(hour, minute);
+                        minute = minute + 5;
+                        hour = hour + (minute >= 60 ? 1 : 0);
+                        minute = minute % 60;
+
+                        current = LocalTime.of(hour, minute);
+                    }
+
+                    for (LocalTime[] lessonTime : lessonTimes) {
+                        ClassroomLesson classroomLesson = new ClassroomLesson();
+
+                        classroomLesson.setClassroom(classroom);
+                        classroomLesson.setLesson(allLessons.get(random.nextInt(allLessons.size())));
+                        classroomLesson.setDayOfWeek(dayOfWeek);
+                        classroomLesson.setStartTime(lessonTime[0]);
+                        classroomLesson.setEndTime(lessonTime[1]);
+                        Teacher teacher = allTeachers.get(10); //getFreeTeacher();
+                        classroomLesson.setTeacher(teacher);
+                        //teacher.setIsFree(false);
+                        classroomService.addClassroomLesson(classroomLesson);
+                        //classroomLesson.set
+                    }
+                    //setAllTeacherFree();
                 }
-
-                for (LocalTime[] lessonTime : lessonTimes) {
-                    ClassroomLesson classroomLesson = new ClassroomLesson();
-
-                    classroomLesson.setClassroom(classroom);
-                    classroomLesson.setLesson(allLessons.get(random.nextInt(allLessons.size())));
-                    classroomLesson.setDayOfWeek(dayOfWeek);
-                    classroomLesson.setStartTime(lessonTime[0]);
-                    classroomLesson.setEndTime(lessonTime[1]);
-                    Teacher teacher = allTeachers.get(10); //getFreeTeacher();
-                    classroomLesson.setTeacher(teacher);
-                    //teacher.setIsFree(false);
-                    classroomService.addClassroomLesson(classroomLesson);
-                    //classroomLesson.set
-                }
-                //setAllTeacherFree();
             }
         }
     }
