@@ -1,6 +1,7 @@
 package at.htl.workloads.classroom;
 
 import at.htl.model.ClassroomDTO;
+import at.htl.model.TeacherHourCountDTO;
 
 import java.net.URI;
 import java.time.DayOfWeek;
@@ -24,4 +25,6 @@ public interface ClassroomService {
     List<Lesson> findAllLessons();
 
     void addClassroomLesson(ClassroomLesson classroomLesson);
+
+    List<TeacherHourCountDTO> getTeacherWithStudentsCount(Long TeacherId);
 }
