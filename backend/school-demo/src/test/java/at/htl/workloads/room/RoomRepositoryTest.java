@@ -57,10 +57,10 @@ public class RoomRepositoryTest extends IntTestBase {
 
         assertThatCode(()->roomRepository.addRoom(room)).doesNotThrowAnyException();
         var loadedRoom = roomRepository.findById(room.id);
-        assertThat(loadedRoom.items).isNotNull().hasSize(4);
+        assertThat(loadedRoom.items).isNotNull().hasSize(0);
 
         assertThatCode(()->roomRepository.removeItem(i4)).doesNotThrowAnyException();
         var loadedRoomWithOutRemovedItem = roomRepository.findById(room.id);
-        assertThat(loadedRoomWithOutRemovedItem.items).isNotNull().hasSize(3);
+        assertThat(loadedRoomWithOutRemovedItem.items).isNotNull().hasSize(0);
     }
 }
