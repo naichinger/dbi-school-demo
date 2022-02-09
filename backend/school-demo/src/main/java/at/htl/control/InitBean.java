@@ -108,7 +108,7 @@ public class InitBean {
                         classroomLesson.setDayOfWeek(dayOfWeek);
                         classroomLesson.setStartTime(lessonTime[0]);
                         classroomLesson.setEndTime(lessonTime[1]);
-                        Teacher teacher = allTeachers.get(10); //getFreeTeacher();
+                        Teacher teacher = allTeachers.get(random.nextInt(allTeachers.size())); //getFreeTeacher();
                         classroomLesson.setTeacher(teacher);
                         //teacher.setIsFree(false);
                         classroomService.addClassroomLesson(classroomLesson);

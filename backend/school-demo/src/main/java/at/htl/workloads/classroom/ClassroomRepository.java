@@ -1,5 +1,8 @@
 package at.htl.workloads.classroom;
 
+import at.htl.model.StudentCountDTO;
+import at.htl.model.TeacherHourCountDTO;
+
 import java.time.DayOfWeek;
 import java.util.List;
 
@@ -21,4 +24,8 @@ public interface ClassroomRepository {
     void addClassroomLesson(ClassroomLesson classroomLesson);
 
     List<List<ClassroomLesson>> getTimetable(long classroomID);
+
+    List<StudentCountDTO> getClassWithStudentCount();
+
+    List<TeacherHourCountDTO> getTeacherWithStudentsCount(Long TeacherId);
 }

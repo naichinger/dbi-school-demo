@@ -1,12 +1,13 @@
 package at.htl.workloads.classroom;
 
+import at.htl.model.StudentCountDTO;
+import at.htl.model.TeacherHourCountDTO;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
@@ -87,5 +88,27 @@ public class ClassroomRepositoryImpl implements ClassroomRepository {
             lessons.add(classroomLessonList);
         }
         return lessons;
+    }
+
+    @Override
+    public List<StudentCountDTO> getClassWithStudentCount() {
+
+        TypedQuery<StudentCountDTO> query =  entityManager.createQuery(
+                "Select new at.htl.model.StudentCountDTO(c, count(c)) from Student s join s.classroom c group by c",
+                StudentCountDTO.class
+        );
+
+        return query.getResultList();
+    }
+
+    @Override
+    public List<TeacherHourCountDTO> getTeacherWithStudentsCount(Long TeacherId) {
+
+        TypedQuery<TeacherHourCountDTO> query = entityManager.createQuery(
+                "select new at.htl.model.TeacherHourCountDTO(c.name, count(c)) from ClassroomLesson cl join cl.classroom c where cl.teacher.id=?1 group by c.name",
+                TeacherHourCountDTO.class
+        ).setParameter(1, TeacherId);
+
+        return query.getResultList();
     }
 }
