@@ -15,21 +15,24 @@
 </style>
 -->
 <body>
-<h1>Timetable </h1>
 
-<form action="/api/timetable" method="post" name="timetableForm" enctype="application/x-www-form-urlencoded">
+<div class="container">
 
-    <label for="classOption">Klasse: </label>
-    <select name="classOption" id="classOption">
-        <option disabled value="">Klasse</option>
+    <h1>Timetable </h1>
 
-        {#for c in classes}
-            <option value="{c.id}">{c}</option>
-        {/for}
-    </select>
+    <form action="/api/timetable" method="post" name="timetableForm" enctype="application/x-www-form-urlencoded">
 
-    <input type="submit" value="Submit">
-</form>
+        <label for="classOption">Klasse: </label>
+        <select name="classOption" id="classOption">
+            <option disabled value="">Klasse</option>
+
+            {#for c in classes}
+                <option {#if c.getName() is className} selected="true" {/if} value="{c.id}">{c}</option>
+            {/for}
+        </select>
+
+        <input type="submit" value="Submit">
+    </form>
 
 <!--
 <div class="container">
@@ -44,18 +47,19 @@
 </div>
 -->
 
-<table>
-    {#for list in listlist}
-        <tr>
-            {#for item in list}
-                <td>
-                    {item}
-                </td>
-            {/for}
-        </tr>
-    {/for}
-</table>
+    <table>
+        {#for list in listlist}
+            <tr>
+                {#for item in list}
+                    <td>
+                        {item}
+                    </td>
+                {/for}
+            </tr>
+        {/for}
+    </table>
 
+</div>
 
 </body>
 </html>

@@ -44,28 +44,6 @@ public class TimetableResource {
         //return Response.ok(repo.getTimetable(classroomID)).build();
         //return Response.ok(repo.findAll()).build();
     }
-    @Path("classroom/all")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllClassrooms(){
-        //return Templates.timetable(repo.getTimetable(classroomID));
-        return Response.ok(repo.findAll()).build();
-    }
-
-    @Path("classroom/spez")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response spez(){
-        return Response.ok(repo.findById(1)).build();
-    }
-
-    @Path("classroom/spez/spez")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response spezfurther(){
-
-        return Response.ok(repo.getTimetable(1)).build();
-    }
 
 
 }
